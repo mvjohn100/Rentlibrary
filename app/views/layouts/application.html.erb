@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rentlibrary</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="container">
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4">
+    <div id="user_nav">
+      <% if user_signed_in? %>
+          Signed in as <%= current_user.email %>. Not you?
+          <%= link_to "Sign out", destroy_user_session_path,:method=>:delete %>
+      <% else %>
+          <%#= link_to "Sign up", new_user_registration_path %>
+          <%= link_to "Sign in", new_user_session_path %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <!--<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">-->
+    <!--&nbsp;-->
+  <!--</div>-->
+  <div id="logoimage" class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+    <%=image_tag("logo.png", alt: "logo",class: "img-rounded img-responsive") %>
+  </div>
+  <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+    <div class="page-header">
+      <h1 id="head1">Klairvoyant - <small>Online</small> Book Rental </h1>
+    </div>
+  </div>
+
+</div>
+
+
+<%= yield %>
+
+</body>
+</html>
